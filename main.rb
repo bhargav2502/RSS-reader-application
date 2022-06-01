@@ -1,6 +1,11 @@
 require_relative 'rssManager.rb'
 require_relative 'rssData.rb'
 
+#for Unit testing
+def LoadRss(rssManager,rssUrl)
+    return rssManager.ChannelFromUrl(rssUrl)
+end
+
 class Application
     def Execute
 
@@ -11,7 +16,7 @@ class Application
         rssManager = RssManager.new
 
         # Load RSS Feed from url, to an RssChannel data model
-        rssChannel = rssManager.ChannelFromUrl(rssUrl)
+        rssChannel = LoadRss(rssManager,rssUrl)
         
         # Print channel info
         puts rssChannel.Title
